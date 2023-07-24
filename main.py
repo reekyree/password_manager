@@ -9,5 +9,7 @@ import generator
 # Sample password variable to write to file. 
 password = [1,2,3]
 
+generator.main()
+
 for item in password:
     print(item, end='')
