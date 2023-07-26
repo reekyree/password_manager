@@ -75,6 +75,10 @@ def main():
 
     displayPass(password)
 
+    passString = ''.join(str(i) for i in password)
+
+    return passString 
+
 
 if __name__ == "__main__":
     main()
