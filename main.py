@@ -6,7 +6,7 @@
 # Create a function to display all passwords in the txt file.
 
 
-import generator
+import generator, sys
 
 
 def savePass(password):
@@ -24,6 +24,9 @@ def displayAll():
     # Display the passwords listed in passwords.txt.
     print("Coming soon!")
 
+def generatePass():
+    # Generate a new password.
+
 
 # Ask whether the user wants to generate a password.
 answer = input("Would you like to generate a new pasword? (y/n) ")
@@ -37,8 +40,9 @@ if answer.lower() == 'y':
     if save.lower() == 'y':
 
         savePass(password)
-
+    
     else:
         
         print("Then we are done here.")
+        sys.exit()
 
