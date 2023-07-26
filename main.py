@@ -26,7 +26,7 @@ def displayAll():
 
 def generatePass():
     # Generate a new password.
-
+    print("Coming soon!")
 
 # Ask whether the user wants to generate a password.
 answer = input("Would you like to generate a new pasword? (y/n) ")
