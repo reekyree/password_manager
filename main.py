@@ -20,6 +20,11 @@ def savePass(password):
     pass_file.close()
 
 
+def displayAll():
+    # Display the passwords listed in passwords.txt.
+    print("Coming soon!")
+
+
 # Ask whether the user wants to generate a password.
 answer = input("Would you like to generate a new pasword? (y/n) ")
 
