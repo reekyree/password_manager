@@ -12,7 +12,9 @@ import generator, sys
 
 def showMenu():
     print("(1) Generate a new password")
-    print("(2) ")
+    print("(2) Search Passwords")
+    print("(3) Show All Passwords")
+    print("(4) Quit Manager")
 
 
 def savePass(password):
@@ -28,7 +30,12 @@ def savePass(password):
 
 def displayAll():
     # Display the passwords listed in passwords.txt.
-    print("Coming soon!")
+    pass_file = open("passwords.txt", "r")
+
+    print(pass_file.readline())
+
+    pass_file.close()
+
 
 def generatePass():
 
@@ -45,12 +52,23 @@ def main():
 
     while on:
         showMenu()
+        print()
 
-        action = input("What would you like to do? ")
-
+        action = int(input("What would you like to do? "))
+    
         if action == 1:
             generatePass()
 
+        elif action == 3:
+            displayAll()
+            
+        elif action == 4:
+            on = False
+            quitManager()
+        
+        else:
+            print("Select an action to perform.")
 
 
-
+if __name__ == "__main__":
+    main()
