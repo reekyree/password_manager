@@ -35,7 +35,8 @@ def generatePass():
     password = generator.main()
     return password
 
-
+def quitManager():
+    sys.exit()
     
 def main():
 
@@ -46,5 +47,10 @@ def main():
         showMenu()
 
         action = input("What would you like to do? ")
+
+        if action == 1:
+            generatePass()
+
+
 
 
