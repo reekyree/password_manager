@@ -31,10 +31,14 @@ def savePass(password):
 def displayAll():
     # Display the passwords listed in passwords.txt.
     pass_file = open("passwords.txt", "r")
-
+    
+    
     print(pass_file.readline())
 
     pass_file.close()
+
+def searchPasswords():
+    print("Coming soon!")
 
 
 def generatePass():
@@ -58,6 +62,9 @@ def main():
     
         if action == 1:
             generatePass()
+
+        elif action == 2:
+            searchPasswords()
 
         elif action == 3:
             displayAll()
