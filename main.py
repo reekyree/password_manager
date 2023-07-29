@@ -15,11 +15,12 @@ def showMenu():
     print("(2) Search Passwords")
     print("(3) Show All Passwords")
     print("(4) Quit Manager")
+    print()
 
 
 def savePass(password):
 
-    pass_file = open("passwords.txt", "w")
+    pass_file = open("passwords.txt", "a")
 
     pass_file.write(password)
     
@@ -33,7 +34,9 @@ def displayAll():
     pass_file = open("passwords.txt", "r")
     
     
-    print(pass_file.readline())
+    # print(pass_file.readline())
+    for line in pass_file:
+        print(pass_file.readline)
 
     pass_file.close()
 
@@ -61,13 +64,22 @@ def main():
         action = int(input("What would you like to do? "))
     
         if action == 1:
-            generatePass()
+            password = generatePass()
+            print()
+            save = input("Would you like to save this password? (y/n): ")
+            if save.lower() == 'y':
+                savePass(password)
+            else:
+                break
+            print()
 
         elif action == 2:
             searchPasswords()
+            print()
 
         elif action == 3:
             displayAll()
+            print()
             
         elif action == 4:
             on = False
