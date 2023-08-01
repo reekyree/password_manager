@@ -1,11 +1,9 @@
 # A terminal password manager. 
 
 # TODO
-# Create a 'menu' function.
-# Create funcs
 # Save the password to a username in a dictionary.
-# Create a function to display all passwords in the txt file.
-
+# Password variable continues to store old pass after save.
+# Even when variable is cleared, the same letters get reused.
 
 import generator, sys
 
@@ -70,8 +68,9 @@ def main():
             save = input("Would you like to save this password? (y/n): ")
             if save.lower() == 'y':
                 savePass(password)
+                password = ''
             else:
-                break
+                print("Password not save.")
             print()
 
         elif action == 2:
