@@ -22,7 +22,7 @@ def savePass(password):
 
     pass_file = open("passwords.txt", "a")
 
-    pass_file.write(password)
+    pass_file.write(password + "\n")
     
     print("Your new password has been saved.")
 
@@ -36,9 +36,10 @@ def displayAll():
     
     # print(pass_file.readline())
     for line in pass_file:
-        print(pass_file.readline)
+        print(line)
 
     pass_file.close()
+
 
 def searchPasswords():
     print("Coming soon!")
