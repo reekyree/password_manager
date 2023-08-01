@@ -4,6 +4,7 @@
 # Save the password to a username in a dictionary.
 # Password variable continues to store old pass after save.
 # Even when variable is cleared, the same letters get reused.
+# Add a username search function.
 
 import generator, sys
 
