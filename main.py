@@ -17,15 +17,15 @@ def showMenu():
     print()
 
 
-def savePass(password):
+    #def savePass(password):
 
-    pass_file = open("passwords.txt", "a")
+    #pass_file = open("passwords.txt", "a")
 
-    pass_file.write(password + "\n")
+    #pass_file.write(password + "\n")
     
-    print("Your new password has been saved.")
+    #print("Your new password has been saved.")
 
-    pass_file.close()
+    #pass_file.close()
 
 
 def displayAll():
@@ -39,6 +39,8 @@ def displayAll():
 
     pass_file.close()
 
+def createUsername():
+    # Code goes here
 
 def searchPasswords():
     print("Coming soon!")
