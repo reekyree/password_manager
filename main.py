@@ -39,8 +39,19 @@ def displayAll():
 
     pass_file.close()
 
+
 def createUsername():
-    # Code goes here
+    newPair = {}
+    username = input("Enter a new username: ")
+    # Add username into newPair dictionary
+    password = input("Would you like to generate a new password? (y/n): ")
+    if password.lower() == 'y':
+        password = generator.main()
+        # Add password to newPair dictionary
+    elif password.lower() == 'n':
+        password = input("Enter your new password now: ")
+        # Add password to newPair dictionary
+
 
 def searchPasswords():
     print("Coming soon!")
