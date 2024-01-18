@@ -11,9 +11,10 @@ import generator, sys
 
 def showMenu():
     print("(1) Generate a new password")
-    print("(2) Search Passwords")
-    print("(3) Show All Passwords")
-    print("(4) Quit Manager")
+    print("(2) Create a username/password combo")
+    print("(3) Search Passwords")
+    print("(4) Show All Passwords")
+    print("(5) Quit Manager")
     print()
 
 
@@ -51,10 +52,23 @@ def createUsername():
     elif password.lower() == 'n':
         password = input("Enter your new password now: ")
         # Add password to newPair dictionary
+    
+    # Open the password file and write the pair to the file    
+    pass_file = open("passwords.txt", "a")
+    
+    # Add pair to the dictionary
+    newPair[username] = password
+    
+    for key, value in newPair.items():
+        pass_file.write('%s:%s\n' % (key, value))
+        
+
 
 
 def searchPasswords():
-    print("Coming soon!")
+    #print("Coming soon!")
+    pass_file = open("passwords.txt", "r")
+    
 
 
 def generatePass():
@@ -84,18 +98,22 @@ def main():
                 savePass(password)
                 password = ''
             else:
-                print("Password not save.")
+                print("Password not saved.")
             print()
 
         elif action == 2:
-            searchPasswords()
+            createUsername()
             print()
 
         elif action == 3:
+            searchPasswords()
+            print()
+
+        elif action == 4:
             displayAll()
             print()
             
-        elif action == 4:
+        elif action == 5:
             on = False
             quitManager()
         
