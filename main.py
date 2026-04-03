@@ -1,12 +1,13 @@
 # A terminal password manager. 
 
 # TODO
-# Save the password to a username in a dictionary.
-# Password variable continues to store old pass after save.
-# Even when variable is cleared, the same letters get reused.
+# Test all functions.
+# Password variable continues to store old pass after save. *Note* this is likely due to the random library and its limitations.
+# Program needs to search computer for master password file. A "vault" so to speak.
 # Add a username search function.
+# Lacks encryption, use cryptopgraphy library 
 
-import generator, sys
+import generator, sys, json
 
 
 def showMenu():
@@ -32,8 +33,8 @@ def showMenu():
 def displayAll():
     # Display the passwords listed in passwords.txt.
     pass_file = open("passwords.txt", "r")
-    
-    
+   
+
     # print(pass_file.readline())
     for line in pass_file:
         print(line)
@@ -43,7 +44,7 @@ def displayAll():
 
 def createUsername():
     newPair = {}
-    username = input("Enter a new username: ")
+    itemName = input("Enter item name: ")
     # Add username into newPair dictionary
     password = input("Would you like to generate a new password? (y/n): ")
     if password.lower() == 'y':
@@ -53,23 +54,27 @@ def createUsername():
         password = input("Enter your new password now: ")
         # Add password to newPair dictionary
     
-    # Open the password file and write the pair to the file    
-    pass_file = open("passwords.txt", "a")
-    
     # Add pair to the dictionary
-    newPair[username] = password
-    
-    for key, value in newPair.items():
-        pass_file.write('%s:%s\n' % (key, value))
+    newPair[itemName] = password
+   
+    # Write the new pair to the file 
+    #for key, value in newPair.items():
+    #pass_file.write('%s:%s\n' % (key, value))
+
+    # Open the password file     
+    with open("passwords.json", "w") as pass_file:
+        json.dump(newPair, pass_file)
+
+    # Close the file 
+    pass_file.close()
         
 
-
+# I think this fucntion needs to be able to search the repo or the computer
+# to find the file it needs. If the file doesn't exist, it can't be called.
 
 def searchPasswords():
     #print("Coming soon!")
     pass_file = open("passwords.txt", "r")
-    
-
 
 def generatePass():
 
