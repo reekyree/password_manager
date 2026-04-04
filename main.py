@@ -20,13 +20,9 @@ def showMenu():
 
 
     #def savePass(password):
-
     #pass_file = open("passwords.txt", "a")
-
     #pass_file.write(password + "\n")
-    
     #print("Your new password has been saved.")
-
     #pass_file.close()
 
 

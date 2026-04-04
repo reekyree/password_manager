@@ -2,32 +2,47 @@
 # using alphanumeric characters.
 # The user can specify the number of characters used.
 
+# TODO
+# Add error handling to all input functions
 
-import random, string
+import secrets, string, random # Keeping random so program doesn't break for now, switching to secrets
 from random import shuffle # This lets you randomize a list
 
-password = []
+password = '' 
 
-def getAlpha():
+def getLength():
     # Get the password length.
 
-    # NOTE: Add a password length function that accepts ints, and handle errors for 0 and non int.
-
-    length = int(input("How many letters would you like? (Enter a number) "))
+    length = int(input("Password length (number): "))
     return length
 
-def addNums(password):
-    # Counter provides a stopping point to make sure the
-    # password stays within the specified number range.
+def addChar(password):
+    # Counter variable no longer necessary
     
-    counter = 0
-    addNums = int(input("Min. # of integers (0 if none): "))
-    if addNums > 0:
-        while counter < addNums:
-            password.append(random.randint(0, 9))
-            counter += 1
+    #counter = 0
+
+    # Get # of integers in password
+    amtInt = int(input("Min. # of integers (0 if none): "))
+    if amtInt > 0:
+        digits = string.digits
+        intpass = secrets.choice(integers)
     else:
         print("You are adding (0) numbers.")
+
+    # Get # of alphabetic characters in password 
+    amtAlpha = int(input("Min. # of letters (0 if none): "))
+    if amtAlpha > 0:
+        alphabet = string.ascii_letters
+        alphapass = secrets.choice(alphabet)
+    else:
+        print("You are adding (0) numbers.")
+
+    #if addNums > 0:
+    #while counter < addNums:
+    #password.append(random.randint(0, 9))
+    #counter += 1
+    #else:
+    #print("You are adding (0) numbers.")
 
 def addSpecial(password):
 
@@ -63,11 +78,11 @@ def displayPass(password):
 
 def main():
 
-    length = getAlpha()
+    length = getLength()
 
     createPass(password, length)
 
-    addNums(password)
+    addChar(password)
 
     addSpecial(password)
 
