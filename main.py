@@ -31,18 +31,15 @@ def showMenu():
 
 
 def displayAll():
+
     # Display the passwords listed in passwords.txt.
-    pass_file = open("passwords.txt", "r")
-   
+    with open("passwords.json", "r") as pass_file:
+        data = json.load(pass_file)
+         
+    for k, v in data.items():
+        print(f"{k} : {v}")
 
-    # print(pass_file.readline())
-    for line in pass_file:
-        print(line)
-
-    pass_file.close()
-
-
-def createUsername():
+def createItem():
     newPair = {}
     itemName = input("Enter item name: ")
     # Add username into newPair dictionary
@@ -73,11 +70,11 @@ def createUsername():
 # to find the file it needs. If the file doesn't exist, it can't be called.
 
 def searchPasswords():
-    #print("Coming soon!")
-    pass_file = open("passwords.txt", "r")
-
+    print("Coming soon!")
+    #pass_file = open("passwords.txt", "r")
+    
+    
 def generatePass():
-
     password = generator.main()
     return password
 
@@ -107,7 +104,7 @@ def main():
             print()
 
         elif action == 2:
-            createUsername()
+            createItem()
             print()
 
         elif action == 3:
