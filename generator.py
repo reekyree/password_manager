@@ -10,8 +10,7 @@
 # enters more characters than initially specified.
 # 
 
-import secrets, string, random # Keeping random so program doesn't break for now, switching to secrets
-from random import shuffle # This lets you randomize a list
+import secrets, string, random # Keeping random so program doesn't break for now, switching to secrets and will be dropping random module entirely once changes are made
 
 password = [] 
 
