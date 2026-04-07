@@ -3,12 +3,17 @@
 # The user can specify the number of characters used.
 
 # TODO
-# Add error handling to all input functions
+# getLength needs error handling for non int and 0 inputs.
+# addChar needs error handling for non int
+# addSpecial needs handling for non int
+# Specified password length does not output according to length limit if the user
+# enters more characters than initially specified.
+# 
 
 import secrets, string, random # Keeping random so program doesn't break for now, switching to secrets
 from random import shuffle # This lets you randomize a list
 
-password = '' 
+password = [] 
 
 def getLength():
     # Get the password length.
@@ -25,7 +30,7 @@ def addChar(password):
     amtInt = int(input("Min. # of integers (0 if none): "))
     if amtInt > 0:
         digits = string.digits
-        intpass = secrets.choice(integers)
+        intpass = secrets.choice(digits)
     else:
         print("You are adding (0) numbers.")
 
@@ -49,10 +54,8 @@ def addSpecial(password):
     counter = 0
     addSpecial = int(input("Min. # of special characters (0 if none): "))
     if addSpecial > 0:
-        while counter < addSpecial:
-            special = random.choice(string.punctuation)
-            password.append(special)
-            counter += 1
+        special = secrets.choice(string.punctuation)
+        password.append(special)
     else:
         print("You are adding (0) special characters.")
 
@@ -67,8 +70,8 @@ def createPass(password, length):
 
 def shufflePass(password):
     # Randomize the password.
-    random.shuffle(password)
-
+    secure_random = secrets.SystemRandom()
+    secure_random.shuffle(password)
 
 def displayPass(password):
     # Display the password in a non-list format.
