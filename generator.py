@@ -12,6 +12,8 @@
 
 import secrets, string, random # Keeping random so program doesn't break for now, switching to secrets and will be dropping random module entirely once changes are made
 
+# password variable is global, move it to local
+ 
 password = [] 
 
 def getLength():
@@ -24,42 +26,39 @@ def getLength():
             return length
         except ValueError:
             print("Please enter a valid number.")
+    
+        # Get # of integers in password
+        try:
+            amtInt = int(input("Min. # of integers (0 if none): "))
+            if amtInt > 0:
+                digits = string.digits
+                intpass = secrets.choice(digits)
+            else:
+                print("You are adding (0) numbers.")
+        except ValueError:
+            print("Please enter a valid number.")
 
-def addChar(password):
-
-    # Get # of integers in password
-    amtInt = int(input("Min. # of integers (0 if none): "))
-    if amtInt > 0:
-        digits = string.digits
-        intpass = secrets.choice(digits)
-    else:
-        print("You are adding (0) numbers.")
-
-    # Get # of alphabetic characters in password 
-    amtAlpha = int(input("Min. # of letters (0 if none): "))
-    if amtAlpha > 0:
-        alphabet = string.ascii_letters
-        alphapass = secrets.choice(alphabet)
-    else:
-        print("You are adding (0) numbers.")
-
-    #if addNums > 0:
-    #while counter < addNums:
-    #password.append(random.randint(0, 9))
-    #counter += 1
-    #else:
-    #print("You are adding (0) numbers.")
-
-def addSpecial(password):
-
-    counter = 0
-    addSpecial = int(input("Min. # of special characters (0 if none): "))
-    if addSpecial > 0:
-        special = secrets.choice(string.punctuation)
-        password.append(special)
-    else:
-        print("You are adding (0) special characters.")
-
+        # Get # of alphabetic characters in password 
+        try: 
+            amtAlpha = int(input("Min. # of letters (0 if none): "))
+            if amtAlpha > 0:
+                alphabet = string.ascii_letters
+                alphapass = secrets.choice(alphabet)
+            else:
+                print("You are adding (0) numbers.")
+        except ValueError:
+            print("Please enter a valid number.")
+    
+        # Get # of special characters 
+        try:
+            addSpecial = int(input("Min. # of special characters (0 if none): "))
+            if addSpecial > 0:
+                special = secrets.choice(string.punctuation)
+                password.append(special)
+            else:
+                print("You are adding (0) special characters.")
+        except ValueError:
+            print("Please enter a valid number.")
 
 def createPass(password, length):
     # Create a password based on the length entered by the user.
@@ -67,7 +66,6 @@ def createPass(password, length):
     while len(password) < length:
         char = secrets.choice(string.ascii_letters)
         password.append(char)
-
 
 def shufflePass(password):
     # Randomize the password.
@@ -84,10 +82,6 @@ def main():
     length = getLength()
 
     createPass(password, length)
-
-    addChar(password)
-
-    addSpecial(password)
 
     shufflePass(password)
 
