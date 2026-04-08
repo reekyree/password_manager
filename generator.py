@@ -8,22 +8,24 @@
 # addSpecial needs handling for non int
 # Specified password length does not output according to length limit if the user
 # enters more characters than initially specified.
-# 
+
 
 import secrets, string, random # Keeping random so program doesn't break for now, switching to secrets and will be dropping random module entirely once changes are made
 
 password = [] 
 
 def getLength():
-    # Get the password length.
 
-    length = int(input("Password length (number): "))
-    return length
+    # Update this function to be createPass()
+    # Get the password length.
+    while True:
+        try: 
+            length = int(input("Password length (number): "))
+            return length
+        except ValueError:
+            print("Please enter a valid number.")
 
 def addChar(password):
-    # Counter variable no longer necessary
-    
-    #counter = 0
 
     # Get # of integers in password
     amtInt = int(input("Min. # of integers (0 if none): "))
@@ -63,14 +65,13 @@ def createPass(password, length):
     # Create a password based on the length entered by the user.
 
     while len(password) < length:
-        char = random.choice(string.ascii_letters)
+        char = secrets.choice(string.ascii_letters)
         password.append(char)
 
 
 def shufflePass(password):
     # Randomize the password.
-    secure_random = secrets.SystemRandom()
-    secure_random.shuffle(password)
+    secrets.SystemRandom().shuffle(password)
 
 def displayPass(password):
     # Display the password in a non-list format.
