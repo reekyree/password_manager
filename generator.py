@@ -14,16 +14,16 @@ import secrets, string, random # Keeping random so program doesn't break for now
 
 # password variable is global, move it to local
  
-password = [] 
 
-def getLength():
+def createPass():
+    
+    password = []
 
     # Update this function to be createPass()
     # Get the password length.
     while True:
         try: 
             length = int(input("Password length (number): "))
-            return length
         except ValueError:
             print("Please enter a valid number.")
     
@@ -60,37 +60,37 @@ def getLength():
         except ValueError:
             print("Please enter a valid number.")
 
-def createPass(password, length):
-    # Create a password based on the length entered by the user.
-
     while len(password) < length:
         char = secrets.choice(string.ascii_letters)
         password.append(char)
 
-def shufflePass(password):
-    # Randomize the password.
-    secrets.SystemRandom().shuffle(password)
+    passString = ''.join(str(i) for i in password)
 
-def displayPass(password):
+    return passString
+
+
+
+    #def shufflePass(password):
+    # Randomize the password.
+    #secrets.SystemRandom().shuffle(password)
+
+    #def displayPass(password):
     # Display the password in a non-list format.
-    for char in password:
-        print(char, end='')
+    #for char in password:
+    #print(char, end='')
 
 
 def main():
 
-    length = getLength()
+    # This logic needs to be changed to reflect the removal of the other functions 
 
-    createPass(password, length)
+    password = createPass()
 
-    shufflePass(password)
+    #shufflePass(password)
 
-    displayPass(password)
-
-    passString = ''.join(str(i) for i in password)
-
-    return passString 
-
+    #displayPass(password)
+    
+    print(password)
 
 if __name__ == "__main__":
     main()
